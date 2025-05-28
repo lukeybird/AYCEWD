@@ -244,7 +244,7 @@
             </div>
         </nav>
 
-        <form class="contact-form" action="#" method="POST">
+        <form class="contact-form" action="https://formspree.io/f/xdkgqgok" method="POST">
             <h2 class="form-title">Get Started Today</h2>
             
             <div class="form-group">
@@ -260,7 +260,7 @@
             <div class="form-group">
                 <label for="phone">Phone Number</label>
                 <div class="phone-input">
-                    <input type="tel" id="phone" name="phone" required placeholder="(555) 555-5555" pattern="[0-9]{10}">
+                    <input type="tel" id="phone" name="phone" required placeholder="(555) 555-5555">
                 </div>
             </div>
 
@@ -286,6 +286,14 @@
         phoneInput.addEventListener('input', function(e) {
             let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
             e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        });
+
+        // Form submission handling
+        const form = document.querySelector('.contact-form');
+        form.addEventListener('submit', function(e) {
+            // Remove formatting before submission
+            const phone = document.getElementById('phone');
+            phone.value = phone.value.replace(/\D/g, '');
         });
     </script>
 </body>
